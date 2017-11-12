@@ -83,6 +83,7 @@ $ (
 )
 ```
 which will install all the dependencies we need for eslint.
+<<<<<<< HEAD
 
 From here, you should look into adding the linter to whatever editor you use. I am using VS Code, and installed the ESLint extension, but all modern editors should have this ability.
 
@@ -130,3 +131,5 @@ Okay, we're done with this part! Have a treat, friend. You've earned it.
 
 
 ## Chapter Two: Configuring our dev environment
+=======
+>>>>>>> f1f18fb84464407c8eae7ec7f0301206325a0017
