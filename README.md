@@ -34,7 +34,7 @@ __Also also note:__ I am writing this on, and pretty much exclusively use a Mac.
 
 Ok cool! Now that thats out of the way, lets get down to business!
 
-![business cat meme][http://www.businesscat.happyjar.com/wp-content/uploads/2014/01/2014-01-07-Coffee.png]
+![business cat meme](http://www.businesscat.happyjar.com/wp-content/uploads/2014/01/2014-01-07-Coffee.png)
 
 ## Chapter One: The boring stuff
 
