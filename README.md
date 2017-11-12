@@ -34,7 +34,7 @@ __Also also note:__ I am writing this on, and pretty much exclusively use a Mac.
 
 Ok cool! Now that thats out of the way, lets get down to business!
 
-![business cat meme][/README_ASSETS/business_cat.png]
+![business cat meme][http://www.businesscat.happyjar.com/wp-content/uploads/2014/01/2014-01-07-Coffee.png]
 
 ## Chapter One: The boring stuff
 
@@ -50,7 +50,8 @@ __PROTIP:__ You can use the tab key to autocomplete folders and files in the ter
 
 Now that we are here, lets initialize our yarn/npm config.
 
-`$ yarn
+`$ yarn init`
+
 
 [The npm site for Airbnb eslint config](https://www.npmjs.com/package/eslint-config-airbnb) is extremely helpful in getting this set up. following their lead, I'm going to run:
 ```
@@ -59,4 +60,4 @@ Now that we are here, lets initialize our yarn/npm config.
   npm info "$PKG@latest" peerDependencies --json | command sed 's/[\{\},]//g ; s/: /@/g' | xargs npm install --save-dev "$PKG@latest"
 )
 ```
-which will install all my depend
+which will install all the dependencies we need for eslint.
