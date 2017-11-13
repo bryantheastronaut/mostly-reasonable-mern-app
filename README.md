@@ -130,3 +130,98 @@ Okay, we're done with this part! Have a treat, friend. You've earned it.
 
 
 ## Chapter Two: Configuring our dev environment
+
+For this app, we will be using some features of JS that are not currently in the spec for the current version of JS. In order for this to work properly, we will be using Babel to transpile our code and make it run with the older syntax.
+
+Let's start by adding:
+
+`$ yarn add babel-cli babel-preset-es2015 babel-preset-stage-0`
+
+We can make a few files to test this is working correctly. Lets `$ touch index.js && touch function.js` and update them as so:
+
+```javascript
+// index.js
+import { helper } from './function';
+
+helper();
+
+// helper.js
+export const helper = () => {
+  console.log('YAY! it works!');
+}
+
+```
+
+If we try to run these with `$ node index.js`, we should get an error that says something like
+`SyntaxError: Unexpected token import`
+
+In our _package.json_ file, lets add a new script to use babel-cli
+
+```javascript
+  devDepenencies: { //...
+  },
+  "scripts" {
+    "runfile": "babel-cli index.js --presets es2015,stage-0"
+  }
+} // end of file
+```
+
+This now lets us use the command `$ yarn run runfile`, which will use babel-cli to interpret our `import/export`s. After running this, we should see a message
+```
+> babel-node index.js --presets es2015,stage-0
+
+YAY! it works!
+```
+
+Great! we can `$ rm index.js helper.js` now that we know babel is working correctly.
+
+__Sidenote:__ You may be wondering why we needed to make a start script instead of just running `$ babel-cli index.js --preset es2015,stage-0`. This is because your command line doesnt understand the command `babel-cli`, since it is specific to your node\_modules folder. The start script knows to look in the _node\_modules/_ folder for it.
+
+### A bit about the structure of the app
+By the end of this book, we should have something that resembles an application structure like this:
+
+```
+mostly-reasonable-mern-app
+  - node_modules/
+  - backend
+    - node_modules/
+    - models/
+    - routes/
+    - auth/
+    - server.js
+    - package.json
+  - web
+    - src/
+    - public/
+    - styles/
+    - assets/
+    - node_modules/
+    - package.json
+    - README.md
+    - yarn.lock (if applicable)
+  .eslintrc
+  .gitignore
+  .yarnlock (only if using yarn)
+```
+
+Setting it up like this, we can see there are two main points of entry, the front end (web), which is seperate from the back end. This makes its easy to continue on and say, add a Mobile folder as well, which could use the same backend. Keeping things as seperate and modular as possible makes working with the app easier in the future.
+
+We can set up the skeleton of this now, so we can hop right in and get to work.
+
+`$ mkdir backend && cd backend && yarn init -y` will create our backend folder and initialize the folder with a package.json, making it ready to add node_modules as necessary. The `-y` flag answers yes to all the questions it asked us the first time, getting us through the process faster.
+
+Be sure to `$ cd ..` to get back to the top level folder.
+
+To set up the front end, we will use `create-react-app`, an extremely helpful way to get started working with react without needing to spend a ton of time configuring webpack. If you don't have it installed already, you can `$ npm i -g create-react-app` to install it globally. This means we have access to the command in the terminal.
+
+__Note:__ you may get an error saying you need to run the command as an admin. Use `$ sudo npm i -g create-react-app` and enter your password to solve this.
+
+Now that we have access to the package, we can just run:
+
+`create-react-app web`
+
+which will set up our web folder almost exactly how we need it!
+
+Nice! Pretty much all the setup is now complete. Now we get to have some fun and start working on the application! In the next chapter, we're going to start with the backend!
+
+## Chapter Three: Express, The Server, and stuff.
